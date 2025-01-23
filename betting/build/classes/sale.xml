@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="salens">
+	<select id="paylist" parameterType="String" resultType="sale">
+		select hometeam, awayteam, sporttype, gamedate, gametime, gameresult, s.* from sale s, games g
+		where userid = #{userid} and s.gameid = g.gameid and s.result='확정'
+	 	order by saledate desc
+	</select>
+	<select id="list" parameterType="map" resultType="sale">
+		select hometeam, awayteam, sporttype, gamedate, gametime, s.* from sale s, games g
+		where userid = #{userid} and s.gameid = g.gameid and s.result='미정'
+	 	order by saleid desc
+		offset #{startRow } rows fetch first #{ROW_PER_PAGE } rows only
+	</select>
+	<select id="list1" parameterType="map" resultType="sale">
+		select hometeam, awayteam, sporttype, gamedate, gametime, gameresult, s.* from sale s, games g
+		where s.gameid = g.gameid and s.result='확정'
+	 	order by saleid desc
+		offset #{startRow } rows fetch first #{ROW_PER_PAGE } rows only
+	</select>
+	<select id="select" parameterType="String" resultType="sale">
+		select * from sale where userid=#{userid}
+	</select>
+	<select id="getTotal" resultType="integer">
+		select count(*) from sale where userid=#{userid}
+	</select>
+	<select id="getTotal1" resultType="integer">
+		select count(*) from sale
+	</select>
+	<select id="isDuplicate" parameterType="sale" resultType="integer">
+	    select count(*)
+	    from sale
+	    where userid = #{userid} and gameid = #{gameid}
+	</select>
+	<insert id="insert" parameterType="sale">
+		insert into sale (userid, gameid, userresult)
+		    values (#{userid}, #{gameid}, #{userresult})
+	</insert>
+	<update id="buyUpdate" parameterType="sale">
+		update sale set salepoint = #{salepoint}, saledate = sysdate, result = '확정' where saleid = #{saleid}
+	</update>
+	<update id="updateChecked" parameterType="String">
+		update sale set checked = 'y' where userid=#{userid}
+	</update>
+	<delete id="delete" parameterType="integer">
+		delete from sale where saleid=#{saleid}
+	</delete>
+</mapper>

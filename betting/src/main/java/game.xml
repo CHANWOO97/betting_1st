@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gamens">
+	<select id="list" parameterType="map" resultType="game">
+		select
+			*
+		from games g
+		where status = 'scheduled' order by gamedate desc, gametime desc
+		offset #{startRow } rows fetch first #{ROW_PER_PAGE} rows only
+	</select>
+	<select id="getTotal" resultType="integer">
+		select count(*) from games
+	</select>
+	<select id="select" parameterType="integer" resultType="game">
+		select * from games where gameid=#{gameid}
+	</select>
+	<insert id="insert" parameterType="game">
+		insert into games (gameid, hometeam, awayteam, gamedate, gametime, sporttype) 
+		values (game_seq.NEXTVAL, #{hometeam}, #{awayteam}, #{gamedate}, #{gametime}, #{sporttype})
+	</insert>
+	<update id="delete" parameterType="Integer">
+		update games set del='y' where gameid=#{gameid}
+	</update>
+	<update id="update" parameterType="game">
+		update games set hometeam=#{hometeam}, awayteam=#{awayteam},
+					gamedate=#{gamedate}, gametime=#{gametime}, sporttype=#{sporttype}, gameresult=null
+					where gameid=#{gameid}
+	</update>
+	<update id="updateResult" parameterType="game">
+		update games set hometeam=#{hometeam}, awayteam=#{awayteam},
+					gamedate=#{gamedate}, gametime=#{gametime}, sporttype=#{sporttype}, gameresult=#{gameresult}, status='completed'
+					where gameid=#{gameid}
+	</update>
+	<update id="userSelectUpdate" parameterType="map">
+		update games set userselect=#{userselect} where gameid=#{gameid}
+	</update>
+</mapper>

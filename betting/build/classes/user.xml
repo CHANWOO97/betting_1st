@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userns">
+ 	<select id="select" parameterType="string" resultType="user">
+		<!-- 전달된 값을 가져오는 형식 : #{?} -->
+		select * from users where userid=#{userid}
+	</select>
+	<select id="selectId" parameterType="user" resultType="string">
+		select userid from users 
+		where tel=#{tel} 
+		and username=#{username}
+		and del='n'
+	</select>
+	<select id="selectPoint" parameterType="string" resultType="Integer">
+		select point from users 
+		where userid=#{userid}
+	</select>
+	<select id="updatePw" parameterType="user" resultType="Integer">
+		update users set password=#{password} 
+		where email=#{email} 
+		and username=#{username} 
+		and userid=#{userid} 
+		and del='n'
+	</select>
+	<select id="getTotal" parameterType="string" resultType="integer">
+		select count(*) from users
+	</select>
+	<select id="list" parameterType="map" resultType="user">
+		select * from users order by sysdate offset #{startRow } rows
+			fetch first #{ROW_PER_PAGE} rows only
+	</select>
+	<insert id="insert" parameterType="user"> <!-- resultType 은 값을 반환할 때 type 을 의미 입력/수정/삭제는 필요없음 -->
+		insert into users (userid, password, username, address, tel, email, point)
+	    values (#{userid}, #{password}, #{username}, #{address}, #{tel}, #{email}, #{point})
+	</insert>
+	<update id="update" parameterType="user">
+		update users set password=#{password}, username=#{username}, address=#{address}, tel=#{tel}, email=#{email} 
+		where userid=#{userid}
+	</update>
+	<update id="updatePoint" parameterType="map">
+		update users set point=#{point} where userid=#{userid}
+	</update>
+	<update id="delete" parameterType="string">
+		update users set del='y' where userid=#{userid}
+	</update>
+</mapper>

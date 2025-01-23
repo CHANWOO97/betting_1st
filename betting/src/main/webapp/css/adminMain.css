@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f9;
+}
+
+.admin-main-container {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Admin menu */
+.admin-menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.admin-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin-btn:hover {
+    background-color: #0056b3;
+}

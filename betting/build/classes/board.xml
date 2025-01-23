@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardns">
+	<select id="getTotal" resultType="integer">
+	 	select count(*) from board
+	</select>
+	<select id="selectNum" resultType="integer">
+		select nvl(max(num), 0) + 1 from board
+	</select>
+	<select id="list" parameterType="map" resultType="board">
+		select * from board order by num desc offset #{startRow} - 1 rows fetch first #{rOW_PER_PAGE} rows only
+	</select>
+	<insert id="insert" parameterType="board">
+		insert into board values(#{num},#{id},#{subject},#{content},0,sysdate,'n')
+	</insert>
+</mapper>

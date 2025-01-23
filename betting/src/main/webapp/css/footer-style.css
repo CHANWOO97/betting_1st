@@ -1,0 +1,64 @@
+@charset "UTF-8";
+/* Footer General Styles */
+.footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+.footer-container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.company-info,
+.address,
+.copyright {
+    margin: 10px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.footer-list,
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-list li,
+.footer-contact li {
+    margin: 0;
+    color: #555;
+}
+
+.email-link {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.email-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-container {
+        width: 95%;
+    }
+
+    .footer-list,
+    .footer-contact {
+        flex-direction: column;
+        align-items: center;
+    }
+}

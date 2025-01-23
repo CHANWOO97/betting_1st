@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="db.properties" />
+	<typeAliases>
+		<typeAlias alias="user" type="dao.User" />
+		<typeAlias alias="game" type="dao.Game" />
+		<typeAlias alias="board" type="dao.Board" />
+		<typeAlias alias="sale" type="dao.Sale" />
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="user.xml" />
+		<mapper resource="game.xml"/>
+		<mapper resource="board.xml"/>
+		<mapper resource="sale.xml"/>
+	</mappers>
+</configuration>

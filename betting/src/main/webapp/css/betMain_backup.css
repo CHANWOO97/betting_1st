@@ -1,0 +1,127 @@
+@charset "UTF-8";
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.header {
+    background-color: #FF5733;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.main-container {
+    display: flex;
+    margin: 20px;
+    gap: 20px;
+    flex-wrap: wrap; /* 작은 화면에서 요소가 겹치지 않도록 처리 */
+}
+
+/* Game list */
+.main-content {
+    flex: 3;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.game-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.game-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.game-info {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.bet-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.bet-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* 클릭 효과 추가 */
+}
+
+.bet-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* 버튼 확대 */
+}
+.cancel-btn {
+    background-color: #FF5733;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #CC2900;
+}
+
+.bet-button.disabled {
+    background-color: #ddd;
+    color: #aaa;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.purchase-box, .cart-box {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.pagination-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination-btn:hover {
+    background-color: #0056b3;
+}
+
+
+
