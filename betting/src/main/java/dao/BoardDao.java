@@ -42,7 +42,25 @@ public class BoardDao {
 
 		return session.insert("boardns.insert" , board);
 	}
+	public Board select(int num) {
+		
+		return session.selectOne("boardns.select", num);
+	}
 	public int selectNum() {
+		
 		return session.selectOne("boardns.selectNum");
 	}
+	public int update(Board board) {
+		
+		return session.update("boardns.update", board);
+	}
+	public void updateReadCount(int num) {
+		session.update("boardns.updaeReadCount", num);
+		
+	}
+	public int delete(int num) {
+		
+		return session.update("boardns.delete", num);
+	}
+
 }

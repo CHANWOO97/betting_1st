@@ -50,10 +50,10 @@ public class MailToPwAction implements CommandProcess {
                 p.put("mail.smtp.ssl.protocols", "TLSv1.2");
 
                 String subject = "베팅 사이트 비밀번호 초기화";
-                String msg = "초기화된 아래 비밀번호로 로그인하시고 비밀번호 수정하십시오" 
-                		 + System.lineSeparator() 
-                         + System.lineSeparator() 
-                         + randomPassword;
+                String msg = "✔초기화된 아래 비밀번호로 로그인하시고 비밀번호 수정하십시오✔<br>"
+                        + "<p style='font-size: 16px; color: #333; margin-top: 10px; font-weight: bold;'>"
+                        + randomPassword
+                        + "</p>";
 
                 Authenticator auth = new MyAuth();
                 Session session = Session.getDefaultInstance(p, auth);
@@ -62,7 +62,7 @@ public class MailToPwAction implements CommandProcess {
 
                 // 이메일 메타 정보 설정
                 mm.setSentDate(new Date());
-                mm.setFrom(new InternetAddress("본인이메일"));
+                mm.setFrom(new InternetAddress("testwoo789@gmail.com"));
                 mm.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
                 mm.setSubject(subject, "utf-8");
                 mm.setText(msg, "utf-8");
@@ -88,8 +88,8 @@ class MyAuth extends Authenticator {
     javax.mail.PasswordAuthentication account;
 
     public MyAuth() {
-        String id = "본인이메일";
-        String pw = "보안패스워드"; 
+        String id = "testwoo789@gmail.com";
+        String pw = "gxsw igxf mzrr ihcy"; 
         account = new PasswordAuthentication(id, pw);
     }
 

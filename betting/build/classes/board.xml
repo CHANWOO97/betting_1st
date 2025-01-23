@@ -14,4 +14,16 @@
 	<insert id="insert" parameterType="board">
 		insert into board values(#{num},#{id},#{subject},#{content},0,sysdate,'n')
 	</insert>
+	<select id="select" parameterType="integer" resultType="board">
+		select * from board where num=#{num}
+	</select>
+	<update id="update" parameterType="board">
+		update board set subject=#{subject}, content=#{content} where num=#{num}
+	</update>
+	<update id="updaeReadCount" parameterType="integer">
+		update board set readcount = readcount+1 where num=#{num}
+	</update>
+	<update id="delete" parameterType="integer" >
+		update board set del = 'y' where num=#{num}
+	</update>
 </mapper>

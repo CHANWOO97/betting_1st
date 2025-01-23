@@ -7,57 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 목록</title>
-   <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
-    <div id="banner" class="carousel slide" data-bs-ride="carousel">
-		<div class="carousel-indicators">
-			<button type="button" data-bs-target="#banner" data-bs-slide-to="0"
-				class="active" aria-current="true" aria-label="Slide 1"></button>
-			<button type="button" data-bs-target="#banner" data-bs-slide-to="1"
-				aria-label="Slide 2"></button>
-			<button type="button" data-bs-target="#banner" data-bs-slide-to="2"
-				aria-label="Slide 3"></button>
-		</div>
-		<div class="carousel-inner">
-			<div class="carousel-item active b-item" data-bs-interval="3000">
-				<img
-					src="/betting/images/001.png"
-					class="d-block w-100 b-img" alt="...">
-				<div class="carousel-caption d-none d-md-block">
-				</div>
-			</div>
-			<div class="carousel-item b-item" data-bs-interval="3000">
-				<img
-					src="/betting/images/002.png"
-					class="d-block w-100 b-img" alt="...">
-				<div class="carousel-caption d-none d-md-block">					
-				</div>
-			</div>
-			<div class="carousel-item b-item" data-bs-interval="3000">
-				<img
-					src="/betting/images/003.png"
-					class="d-block w-100 b-img" alt="...">
-				<div class="carousel-caption d-none d-md-block">					
-				</div>
-			</div>
-		</div>
-
-
-		<button class="carousel-control-prev" type="button"
-			data-bs-target="#banner" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button"
-			data-bs-target="#banner" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="visually-hidden">Next</span>
-		</button>
-	</div>
-<div class="container mt-4">
+<div class="container mt-4 text-center">
     <h2 class="text-center">게시글 목록</h2>
     
     <c:if test="${empty list }">
@@ -109,7 +63,13 @@
         </c:if>
         
         <c:forEach var="i" begin="${startPage}" end="${endPage}">
-            <button onclick="location.href='list.mj?pageNum=${i}'" class="btn btn-outline-primary mr-2">${i}</button>
+         
+            <c:if test="${currentPage==i }">
+               <a href="list.mj?pageNum=${i}" class="btn btn-outline-primary mr-2 active">${i}</a>
+            </c:if>
+             <c:if test="${currentPage!=i }">
+            	   <a href="list.mj?pageNum=${i}" class="btn btn-outline-primary mr-2">${i}</a>
+            </c:if>
         </c:forEach>
 
         <c:if test="${endPage < totalPage }">
